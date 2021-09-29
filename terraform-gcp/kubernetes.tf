@@ -1,6 +1,6 @@
 resource "google_container_cluster" "primary" {
   name               = var.cluster_name
-  location 	     = data.google_compute_zones.available.names[0]
+  location           = data.google_compute_zones.available.names[0]
   initial_node_count = 3
 
   min_master_version = var.kubernetes_version
@@ -10,10 +10,6 @@ resource "google_container_cluster" "primary" {
     data.google_compute_zones.available.names[1],
   ]
 
-  master_auth {
-    username = var.username
-    password = var.password
-  }
 
   node_config {
     oauth_scopes = [
@@ -22,6 +18,10 @@ resource "google_container_cluster" "primary" {
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
+  }
+  master_auth {
+    username = ""
+    password = ""
   }
 }
 
