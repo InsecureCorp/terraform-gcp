@@ -1,6 +1,6 @@
 resource "google_container_cluster" "primary" {
   name               = var.cluster_name
-  location 	     = data.google_compute_zones.available.names[0]
+  location           = data.google_compute_zones.available.names[0]
   initial_node_count = 3
 
   min_master_version = var.kubernetes_version
@@ -16,12 +16,7 @@ resource "google_container_cluster" "primary" {
   }
 
   node_config {
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
-    ]
+    service_account = "<Provide the service account>"
   }
 }
 
