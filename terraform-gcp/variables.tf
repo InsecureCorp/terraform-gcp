@@ -14,6 +14,7 @@ variable "username" {
 
 variable "password" {
   type = string
+  #tfsec:ignore:GEN001
   default = "ubuntu"
 }
 
