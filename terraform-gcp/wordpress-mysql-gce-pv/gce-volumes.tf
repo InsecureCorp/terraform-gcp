@@ -9,7 +9,6 @@ provider "google" {
 }
 
 resource "google_compute_disk" "mysql" {
-  #checkov:skip=CKV_GCP_37:Encryption not needed
   name = "wordpress-mysql"
   type = "pd-ssd"
   zone = var.gcp_zone
