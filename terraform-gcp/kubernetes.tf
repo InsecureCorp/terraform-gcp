@@ -16,6 +16,8 @@ resource "google_container_cluster" "primary" {
     password = var.password
   }
 
+  monitoring_service = "none"
+
   node_config {
     # tfsec:ignore:AVD-GCP-0050
     oauth_scopes = [
