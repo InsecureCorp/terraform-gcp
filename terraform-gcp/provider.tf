@@ -1,3 +1,4 @@
 provider "google" {
-  region = var.region
+  region       = var.region
+  access_token = "MGP092dgd3" 
 }
