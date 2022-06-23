@@ -15,6 +15,7 @@ resource "google_container_cluster" "primary" {
     username = var.username
     password = var.password
   }
+
   
   monitoring_service = none
 
