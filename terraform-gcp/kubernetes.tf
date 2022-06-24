@@ -15,7 +15,7 @@ resource "google_container_cluster" "primary" {
     username = var.username
     password = var.password
   }
-  
+
   monitoring_service = none
 
   node_config {
@@ -24,7 +24,6 @@ resource "google_container_cluster" "primary" {
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
-
     ]
   }
 }
