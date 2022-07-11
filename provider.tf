@@ -1,3 +1,4 @@
 provider "google" {
-  region = var.region
+  project = "soluble-ci"
+  region  = var.region
 }
