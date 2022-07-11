@@ -10,5 +10,6 @@ workflows:
         - run: "printf 'print getting started'"
         - init
         - run: "terraform plan -input=false -refresh -out $PLANFILE"
-        - run: "checkov -f $PLANFILE"
+        - run: "terragrunt show -json $PLANFILE > $SHOWFILE"
+        - run: "checkov -f $SHOWFILE"
         - run: "printf 'print meeee'"
