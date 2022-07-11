@@ -15,10 +15,11 @@ resource "google_container_cluster" "primary" {
   ]
 
   master_auth {
-    username = var.username
-    password = var.password
+    client_certificate_config {
+      issue_client_certificate = false
+    }
   }
-  monitoring_service = none
+
   node_config {
     # tfsec:ignore:AVD-GCP-0050
     oauth_scopes = [
