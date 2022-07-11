@@ -1,0 +1,9 @@
+---
+version: 3
+workflows: 
+  testing: 
+    plan: 
+      steps: 
+        - init
+        - plan
+        - run: "checkov -f $PLANFILE"
