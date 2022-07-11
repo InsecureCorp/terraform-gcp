@@ -3,10 +3,11 @@ version: 3
 projects:
  - dir: .
    workflow: testing
-workflows: 
-  testing: 
-    plan: 
-      steps: 
+workflows:
+  testing:
+    plan:
+      steps:
+        - run: "printf 'print getting started'"
         - init
         - run: "terraform plan -input=false -refresh -out $PLANFILE"
         - run: "checkov -f $PLANFILE"

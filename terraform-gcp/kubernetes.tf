@@ -1,3 +1,6 @@
+data "google_compute_zones" "available" {
+}
+
 # tfsec:ignore:GCP009: test comment
 resource "google_container_cluster" "primary" {
   name               = var.cluster_name
@@ -22,7 +25,7 @@ resource "google_container_cluster" "primary" {
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
-    
+
     ]
   }
 }
