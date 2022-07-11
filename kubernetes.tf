@@ -16,8 +16,9 @@ resource "google_container_cluster" "primary" {
   monitoring_service = "monitoring.googleapis.com/kubernetes"
 
   master_auth {
-    username = var.username
-    password = var.password
+    client_certificate_config {
+      issue_client_certificate = false
+    }
   }
 
   node_config {
