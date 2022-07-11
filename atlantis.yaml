@@ -10,4 +10,4 @@ workflows:
         - init
         - run: "terraform plan -input=false -refresh -out $PLANFILE"
         - run: "checkov -f $PLANFILE"
-        - run: "printf 'print me'"
+        - run: "printf 'print meeee'"
