@@ -4,15 +4,12 @@ data "google_compute_zones" "available" {
 # tfsec:ignore:GCP009: test comment
 resource "google_container_cluster" "primary" {
   name           = var.cluster_name
-  location 	     = data.google_compute_zones.available.names[0]
-  initial_node_count = 3
+  location 	     = "us-central1"
+  initial_node_count = 1
 
   min_master_version = var.kubernetes_version
   node_version       = var.kubernetes_version
 
-  node_locations = [
-    data.google_compute_zones.available.names[1],
-  ]
   monitoring_service = "monitoring.googleapis.com/kubernetes"
 
   master_auth {
