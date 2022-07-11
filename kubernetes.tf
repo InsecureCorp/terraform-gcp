@@ -11,7 +11,7 @@ resource "google_container_cluster" "primary" {
     data.google_compute_zones.available.names[1],
   ]
   monitoring_service = "monitoring.googleapis.com/kubernetes"
-  
+
   master_auth {
     username = var.username
     password = var.password
@@ -23,7 +23,9 @@ resource "google_container_cluster" "primary" {
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
-    ]}
+    ]
+    
+  }
 
 }
 
