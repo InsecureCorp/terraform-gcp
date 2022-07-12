@@ -1,7 +1,7 @@
 ---
 version: 3
 projects:
- - dir: .
+ - dir: terraform-gcp
    workflow: testing
 workflows:
   testing:
