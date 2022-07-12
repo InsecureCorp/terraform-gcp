@@ -7,7 +7,7 @@ workflows:
   testing:
     plan:
       steps:
-        - run: "printf 'print getting started:' $HEAD_COMMIT $HEAD_BRANCH_NAME"
+        - run: "printf 'print getting started: $HEAD_COMMIT $HEAD_BRANCH_NAME $PULL_NUM $PROJECT_NAME $HEAD_REPO_OWNER $HEAD_BRANCH_NAME $ATLANTIS_TERRAFORM_VERSION'"
         - init
         - run: "terraform plan -input=false -refresh -out $PLANFILE"
         - run: "terraform show -json $PLANFILE > $SHOWFILE"
