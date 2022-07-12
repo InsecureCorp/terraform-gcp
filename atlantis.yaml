@@ -11,5 +11,5 @@ workflows:
         - init
         - run: "terraform plan -input=false -refresh -out $PLANFILE"
         - run: "terraform show -json $PLANFILE > $SHOWFILE"
-        - run: "checkov -f $SHOWFILE"
+        - run: "soluble ea terraform-plan-scan --plan $SHOWFILE"
         - run: "printf 'print meeee'"
