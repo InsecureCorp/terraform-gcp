@@ -1,4 +1,4 @@
 provider "google" {
   project = "soluble-ci"
-  region = var.region
+  region  = var.region
 }

@@ -1,0 +1,3 @@
+suppress:
+  - "ckv-aws-50"
+  - "ckv-gcp-20"
