@@ -5,6 +5,7 @@ name: CI
 env:
   ## Sets environment variable
   SOLUBLE_ORG_ID: 516676385582 
+  SOLUBLE_API_URL: https://app.soluble.cloud
   SOLUBLE_API_TOKEN: ${{secrets.SOLUBLE_API_TOKEN}}"
   
 # Controls when the workflow will run
