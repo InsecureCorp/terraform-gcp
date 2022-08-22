@@ -16,6 +16,10 @@ resource "google_container_cluster" "primary" {
     password = var.password
   }
 
+  pod_security_policy_config {
+    enaled  = false
+  }
+
   monitoring_service = none
 
   node_config {
