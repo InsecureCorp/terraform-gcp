@@ -16,13 +16,19 @@ resource "google_container_cluster" "primary" {
     password = var.password
   }
 
+  pod_security_policy_config {
+    enaled  = false
+  }
+
+  monitoring_service = none
+
   node_config {
     # tfsec:ignore:AVD-GCP-0050
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
-      
+
     ]
   }
 }
