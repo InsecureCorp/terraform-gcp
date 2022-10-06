@@ -1,0 +1,4 @@
+suppress:
+ - "ckv-gcp-68"
+ - "tfsec-gcp012"
+ - "ckv-gcp-67"
