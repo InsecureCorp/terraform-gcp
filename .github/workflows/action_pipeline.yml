@@ -29,11 +29,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - uses: actions/docker@v2
-        name: Scan the repo for vulnerabilities in IaC
-        with:
-          args: components list
-          image: lacework/lacework-cli:latest
+      - name: Scan the repo for vulnerabilities in IaC
+        run: |
+        docker run -it lacework/lacework-cli:latest components list
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT_NAME }}
           LW_API_KEY: ${{ secrets.LW_ACCESS_TOKEN }}
