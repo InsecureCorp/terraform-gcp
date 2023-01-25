@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Scan the repo for vulnerabilities in IaC
         run: |
-        docker run -it lacework/lacework-cli:latest components list
+             docker run -it lacework/lacework-cli:latest components list
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT_NAME }}
           LW_API_KEY: ${{ secrets.LW_ACCESS_TOKEN }}
