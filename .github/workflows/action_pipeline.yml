@@ -4,10 +4,10 @@ name: CI
 
 env:
   ## Sets environment variable
-  SOLUBLE_ORG_ID: 516676385582 
+  SOLUBLE_ORG_ID: 516676385582
   SOLUBLE_API_URL: https://app.demo.soluble.cloud
   SOLUBLE_API_TOKEN: ${{secrets.SOLUBLE_API_TOKEN}}
-  
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -29,13 +29,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Soluble TF Scan
+      - name: Scan the repo for vulnerabilities in IaC
         run: |
-          curl https://raw.githubusercontent.com/soluble-ai/soluble-cli/master/linux-install.sh | sh
-          soluble terraform-scan --upload --fail high
+        docker run -it lacework/lacework-cli:latest components list
+        env:
+          LW_ACCOUNT: ${{ secrets.LW_ACCOUNT_NAME }}
+          LW_API_KEY: ${{ secrets.LW_ACCESS_TOKEN }}
+          LW_API_SECRET: ${{ secrets.LW_API_SECRET }}
+      # Runs a set of commands using the runners shell
+      # - name: Soluble TF Scan
+      #   run: |
+      #     curl https://raw.githubusercontent.com/soluble-ai/soluble-cli/master/linux-install.sh | sh
+      #     soluble terraform-scan --upload --fail high
