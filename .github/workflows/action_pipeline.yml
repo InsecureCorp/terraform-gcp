@@ -32,7 +32,7 @@ jobs:
       - uses: actions/docker@v2
         name: Scan the repo for vulnerabilities in IaC
         with:
-          args: list
+          args: components list
           image: lacework/lacework-cli:latest
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT_NAME }}
