@@ -31,9 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Scan the repo for vulnerabilities in IaC
         run: |
-             docker run -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET lacework/lacework-cli:latest components list
-             docker run -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET lacework/lacework-cli:latest components install iac
-             docker run -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET lacework/lacework-cli:latest iac tf-scan
+             docker run -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET lacework/lacework-cli:latest components install iac && lacework iac tf-scan
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT }}
           LW_API_KEY: ${{ secrets.LW_API_KEY }}
