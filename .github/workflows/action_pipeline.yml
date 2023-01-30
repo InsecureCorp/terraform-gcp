@@ -7,6 +7,8 @@ env:
   SOLUBLE_ORG_ID: 516676385582
   SOLUBLE_API_URL: https://app.demo.soluble.cloud
   SOLUBLE_API_TOKEN: ${{secrets.SOLUBLE_API_TOKEN}}
+  DOCKER_REGISTRY_USER: ${{ secrets.DOCKER_REGISTRY_USER }}
+  DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
 # Controls when the workflow will run
 on:
@@ -28,10 +30,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Login to docker registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{ env.DOCKER_REGISTRY_USER }}
+          password: ${{ env.DOCKER_REGISTRY_PASSWORD }}
       - name: Scan the repo for vulnerabilities in IaC
         run: |
-             docker run -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET lacework/lacework-cli:latest components install iac && iac tf-scan --no-docker
+             docker pull lacework/codesec-iac:latest
+             docker run -e SCAN_COMMAND=tf-plan -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET -v $(pwd):/app/src -e WORKSPACE=src lacework/codesec-iac:latest
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT }}
           LW_API_KEY: ${{ secrets.LW_API_KEY }}
