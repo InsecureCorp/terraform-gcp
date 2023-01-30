@@ -40,7 +40,7 @@ jobs:
       - name: Scan the repo for vulnerabilities in IaC
         run: |
              docker pull lacework/codesec-iac:latest
-             docker run -e SCAN_COMMAND=tf-plan -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET -v "$(pwd):/app/src" -e WORKSPACE=src lacework/codesec-iac:latest
+             docker run -e SCAN_COMMAND=tf-scan -e LW_ACCOUNT=$LW_ACCOUNT -e LW_API_KEY=$LW_API_KEY -e LW_API_SECRET=$LW_API_SECRET -v "$(pwd):/app/src" -e WORKSPACE=src lacework/codesec-iac:latest
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT }}
           LW_API_KEY: ${{ secrets.LW_API_KEY }}
