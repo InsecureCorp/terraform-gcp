@@ -42,6 +42,7 @@ jobs:
              env | grep "GITHUB_\|LW_" > env.list
              echo "SCAN_COMMAND=tf-scan" >> env.list
              echo "WORKSPACE=src" >> env.list
+             echo "EXIT_CODE='High'"
              docker pull lacework/codesec-iac:latest
              docker run --env-file env.list -v "$(pwd):/app/src" lacework/codesec-iac:latest
         env:

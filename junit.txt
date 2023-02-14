@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites><testsuite name="IaC Scan Results">
+
+
+
+<testcase classname="google_compute_disk.wordpress" name="ckv-gcp-37" >
+<error><![CDATA[
+
+
+Title: Google compute disk is encrypted check
+
+
+File: terraform-gcp/wordpress-mysql-gce-pv/gce-volumes.tf
+
+
+Resource: google_compute_disk.wordpress
+
+
+Severity: Medium
+
+
+Description: 
+
+
+
+Ensure VM disks for critical VMs are encrypted with Customer Supplied Encryption Keys (CSEK)
+]]>
+</error>
+</testcase>
+
+
+
+
+<testcase classname="kubernetes_service.mysql" name="ckv-k8s-21" >
+<error><![CDATA[
+
+
+Title: The default namespace should not be used
+
+
+File: terraform-gcp/wordpress-mysql-gce-pv/mysql.tf
+
+
+Resource: kubernetes_service.mysql
+
+
+Severity: Low
+
+
+Description: 
+
+
+
+Kubernetes namespaces are multiple virtual clusters backed by the same physical cluster. These are required to divide resources between multiple users/teams. Kubernetes provides a default namespace, where objects are placed if no namespace is specified for them.
+]]>
+</error>
+</testcase>
+
+
+
+
+<testcase classname="kubernetes_secret.mysql" name="ckv-k8s-21" >
+<error><![CDATA[
+
+
+Title: The default namespace should not be used
+
+
+File: terraform-gcp/wordpress-mysql-gce-pv/mysql.tf
+
+
+Resource: kubernetes_secret.mysql
+
+
+Severity: Low
+
+
+Description: 
+
+
+
+Kubernetes namespaces are multiple virtual clusters backed by the same physical cluster. These are required to divide resources between multiple users/teams. Kubernetes provides a default namespace, where objects are placed if no namespace is specified for them.
+]]>
+</error>
+</testcase>
+
+
+
+
+<testcase classname="kubernetes_replication_controller.mysql" name="ckv-k8s-21" >
+<error><![CDATA[
+
+
+Title: The default namespace should not be used
+
+
+File: terraform-gcp/wordpress-mysql-gce-pv/mysql.tf
+
+
+Resource: kubernetes_replication_controller.mysql
+
+
+Severity: Low
+
+
+Description: 
+
+
+
+Kubernetes namespaces are multiple virtual clusters backed by the same physical cluster. These are required to divide resources between multiple users/teams. Kubernetes provides a default namespace, where objects are placed if no namespace is specified for them.
+]]>
+</error>
+</testcase>
+
+
+
+
+<testcase classname="kubernetes_service.wordpress" name="ckv-k8s-21" >
+<error><![CDATA[
+
+
+Title: The default namespace should not be used
+
+
+File: terraform-gcp/wordpress-mysql-gce-pv/wordpress.tf
+
+
+Resource: kubernetes_service.wordpress
+
+
+Severity: Low
+
+
+Description: 
+
+
+
+Kubernetes namespaces are multiple virtual clusters backed by the same physical cluster. These are required to divide resources between multiple users/teams. Kubernetes provides a default namespace, where objects are placed if no namespace is specified for them.
+]]>
+</error>
+</testcase>
+
+
+
+
+<testcase classname="kubernetes_replication_controller.wordpress" name="ckv-k8s-21" >
+<error><![CDATA[
+
+
+Title: The default namespace should not be used
+
+
+File: terraform-gcp/wordpress-mysql-gce-pv/wordpress.tf
+
+
+Resource: kubernetes_replication_controller.wordpress
+
+
+Severity: Low
+
+
+Description: 
+
+
+
+Kubernetes namespaces are multiple virtual clusters backed by the same physical cluster. These are required to divide resources between multiple users/teams. Kubernetes provides a default namespace, where objects are placed if no namespace is specified for them.
+]]>
+</error>
+</testcase>
+
+
+
+</testsuite>
+</testsuites>
